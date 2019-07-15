@@ -19,6 +19,14 @@ class CreateListsTable extends Migration
             $table->text('descricao');
             $table->double('preco', 8, 2);
             $table->dateTime('data');
+            $table->integer('quantidade');
+            $table->unsignedBigInteger('grouplist_id');
+
+            //Adicionando a chave estrangeira
+            $table->foreign('grouplist_id')
+            ->references('id')->on('grouplist')
+            ->onDelete('cascade');
+
             //vai criar os campos timestamp created_at e updated_at
             $table->timestamps();
         });
